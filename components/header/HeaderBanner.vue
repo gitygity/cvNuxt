@@ -3,8 +3,8 @@
     <section id="banner">
       <div class="head-content">
         <a class="img-container" href="#"><img src="../../assets/images/p1.png" alt="Image" /></a>
-        <h1 class="user-name">Gity Ghasemi</h1>
-        <h4 class="specialty">FrontEnd Developer</h4>
+        <h1 class="user-name"> {{ user?.firstName+" "+user?.lastName }}</h1>
+        <h4 class="specialty">{{user?.stack}}</h4>
         <div>
           <button class="btn-header"><a>Hire Me</a></button>
           <button class="btn-header"><a>Download CV</a></button>
@@ -37,7 +37,12 @@
     </section>
   </div>
 </template>
-<script lang="ts" setup></script>
+<script lang="ts" setup>
+
+const { data: user } = await useFetch('/api/user')
+
+</script>
+
 <style scoped lang="css">
 img {
   max-width: 100%;

@@ -5,7 +5,7 @@
         <header>
           <h2>About</h2>
         </header>
-        <p>Hello! I am<strong> Gity Ghasemi</strong>.</p>
+        <p>Hello! I am<strong> {{ " "+user?.firstName+" "+user?.lastName }}</strong>.</p>
         <p>
           A Frontend developer with 4+ years of experience in developing interactive websites & web
           pages incorporating responsive web design. expertise in web development ( React, Svelte,
@@ -15,16 +15,20 @@
       <section>
         <h2>Basic Information</h2>
         <ul class="basic-info">
-          <li><b>EMAIL</b>gity.ghasemi@gmail.com</li>
-          <li><b>PHONE</b>+98 9135344071</li>
-          <li><b>LOCATION</b>Iran</li>
-          <li><b>LANGUAGE</b>English, persian</li>
+          <li><b>EMAIL</b>{{ info?.email }}</li>
+          <li><b>PHONE</b>{{ info?.phone}}</li>
+          <li><b>LOCATION</b>{{ info?.location}}</li>
+          <li><b>LANGUAGE</b>{{ info?.language}}</li>
         </ul>
       </section>
     </div>
   </section>
 </template>
-<script setup lang="ts"></script>
+<script setup lang="ts">
+const {data:user}=await useFetch('/api/user')
+const {data:info}=await useFetch('/api/info')
+
+</script>
 
 <style scoped lang="css">
 .basic-info {

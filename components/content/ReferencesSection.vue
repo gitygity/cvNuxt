@@ -8,79 +8,29 @@
       </p>
     </header>
     <div class="card">
-      <div class="refere-container">
+      <div  v-for="(refer,index) in references" :key="index"  class="refere-container">
         <div class="info-refer">
-          <img class="refer-thumbnail" src="../../assets/images/p1.png" alt="person1" />
+          <img class="refer-thumbnail" src="../../assets/images/p1.png" :alt="'person'+index" />
           <div class="refer-name">
-            <h4>John Ddd</h4>
-            <span>FrontEnd Developer</span>
-          </div>
-        </div>
-        <div class="refer-qoute">
-          
-          <font-awesome-icon icon="fa-solid fa-quote-left" size="2xl" />
-          <p>
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Minus eos quasi tempora
-            deleniti sunt, quo eius iste, inventore quisquam similique facilis voluptatibus ut
-            quidem consequuntur adipisci odio. Repudiandae, nulla aut.
-          </p>
-        </div>
-      </div>
-      <div class="refere-container">
-        <div class="info-refer">
-          <img class="refer-thumbnail" src="../../assets/images/p2.png" alt="person1" />
-          <div class="refer-name">
-            <h4>John Ddd</h4>
-            <span>FrontEnd Developer</span>
+            <h4>{{ refer?.firstName+" "+refer?.lastName }}</h4>
+            <span>{{ refer?.stack }}</span>
           </div>
         </div>
         <div class="refer-qoute">
           <font-awesome-icon icon="fa-solid fa-quote-left" size="2xl" />
           <p>
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Minus eos quasi tempora
-            deleniti sunt, quo eius iste, inventore quisquam similique facilis voluptatibus ut
-            quidem consequuntur adipisci odio. Repudiandae, nulla aut.
+           {{ refer?.referText }}
           </p>
         </div>
       </div>
-      <div class="refere-container">
-        <div class="info-refer">
-          <img class="refer-thumbnail" src="../../assets/images/p3.png" alt="person1" />
-          <div class="refer-name">
-            <h4>John Ddd</h4>
-            <span>FrontEnd Developer</span>
-          </div>
-        </div>
-        <div class="refer-qoute">
-          <font-awesome-icon icon="fa-solid fa-quote-left" size="2xl" />
-          <p>
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Minus eos quasi tempora
-            deleniti sunt, quo eius iste, inventore quisquam similique facilis voluptatibus ut
-            quidem consequuntur adipisci odio. Repudiandae, nulla aut.
-          </p>
-        </div>
-      </div>
-      <div class="refere-container">
-        <div class="info-refer">
-          <img class="refer-thumbnail" src="../../assets/images/p4.png" alt="person1" />
-          <div class="refer-name">
-            <h4>John Ddd</h4>
-            <span>FrontEnd Developer</span>
-          </div>
-        </div>
-        <div class="refer-qoute">
-          <font-awesome-icon icon="fa-solid fa-quote-left" size="2xl" />
-          <p>
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Minus eos quasi tempora
-            deleniti sunt, quo eius iste, inventore quisquam similique facilis voluptatibus ut
-            quidem consequuntur adipisci odio. Repudiandae, nulla aut.
-          </p>
-        </div>
-      </div>
+      
     </div>
   </section>
 </template>
-<script setup lang="ts"></script>
+<script setup lang="ts">
+const {data:references}=useFetch("/api/references")
+
+</script>
 
 <style scoped lang="css">
 .refer-thumbnail {

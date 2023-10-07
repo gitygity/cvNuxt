@@ -8,50 +8,24 @@
           atque est quod.
         </p>
       </header>
-      <div class="card-education">
+      <div v-for="(education, index) in educations" :key="index" class="card-education">
         <div class="top-section">
-          <p>April 2014 - March 2016</p>
-          <h3>Master</h3>
+          <p>{{education?.startDate+" - "+education?.endDate}}</p>
+          <h3>{{ education?.degree }}</h3>
         </div>
         <div class="bottom-section">
-          <h3>Information Technology</h3>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus laudantium.Lorem
-            ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus laudantium
-          </p>
+          <h3>{{ education?.field }}</h3>
+          <p>{{ education?.description }}</p>
         </div>
       </div>
-      <div class="card-education">
-        <div class="top-section">
-          <p>April 2014 - March 2016</p>
-          <h3>Master</h3>
-        </div>
-        <div class="bottom-section">
-          <h3>Information Technology</h3>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus laudantium.Lorem
-            ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus laudantium
-          </p>
-        </div>
-      </div>
-      <div class="card-education">
-        <div class="top-section">
-          <p>April 2014 - March 2016</p>
-          <h3>Master</h3>
-        </div>
-        <div class="bottom-section">
-          <h3>Information Technology</h3>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus laudantium.Lorem
-            ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus laudantium
-          </p>
-        </div>
-      </div>
+
     </div>
   </section>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+const {data:educations}=await useFetch('/api/education')
+</script>
 
 <style scoped lang="css">
 .bottom-section {

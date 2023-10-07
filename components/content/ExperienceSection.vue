@@ -8,80 +8,27 @@
   </header>
 
   <section class="ac-container">
-    <div class="ac-item">
-      <div class="year-badge-container"><span class="year-badge">2012 - 2017</span></div>
+    <div v-for="(experience, index) in experiences" :key="index" class="ac-item">
+      <div class="year-badge-container"><span class="year-badge">{{experience?.startDate+" - "+experience?.endDate}}</span></div>
       <div class="ac-item-detail">
-        <input id="ac-1" type="checkbox" checked="false">
-        <label class="ac-icon" for="ac-1"></label>
+        <input :id="'ac-' + index+1"  type="checkbox" :checked="index===0">
+        <label class="ac-icon" :for="'ac-' + index+1"></label>
         <article class="ac-content">
-          <h1>Exprience1</h1>
-          <span>subtitle1</span>
-          <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Totam libero suscipit dignissimos, ullam
-            laudantium perferendis commodi repudiandae beatae rem sunt facilis. Harum iusto nemo est quod sequi
-            expedita vel cumque!</p>
+          <h1>{{ experience?.company }}</h1>
+          <span>{{ experience?.stack }}</span>
+          <p>{{ experience?.description }}</p>
           <a href="#">more</a>
-
-
         </article>
       </div>
     </div>
-    <div class="ac-item">
-      <div class="year-badge-container"><span class="year-badge">2012 - 2017</span></div>
-      <div class="ac-item-detail">
-        <input id="ac-2" type="checkbox">
-        <label class="ac-icon" for="ac-2"></label>
-        <article class="ac-content">
-          <h1>Exprience2</h1>
-          <span>subtitle2</span>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit dicta illo, numquam amet maxime quas
-            consequatur explicabo maiores distinctio sint cupiditate, voluptatem accusantium culpa a sit saepe
-            corrupti consequuntur eligendi.</p>
-          <a href="#">more</a>
-
-
-        </article>
-      </div>
-    </div>
-
-    <div class="ac-item">
-      <div class="year-badge-container"><span class="year-badge">2012 - 2017</span></div>
-      <div class="ac-item-detail">
-        <input id="ac-3" type="checkbox">
-        <label class="ac-icon" for="ac-3"></label>
-        <article class="ac-content">
-          <h1>Exprience3</h1>
-          <span>subtitle3</span>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit dicta illo, numquam amet maxime quas
-            consequatur explicabo maiores distinctio sint cupiditate, voluptatem accusantium culpa a sit saepe
-            corrupti consequuntur eligendi.</p>
-          <a href="#">more</a>
-
-
-        </article>
-      </div>
-    </div>
-    <div class="ac-item">
-      <div class="year-badge-container"><span class="year-badge">2012 - 2017</span></div>
-      <div class="ac-item-detail">
-        <input id="ac-4" type="checkbox">
-        <label class="ac-icon" for="ac-4"></label>
-        <article class="ac-content">
-          <h1>Exprience4</h1>
-          <span>subtitle4</span>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit dicta illo, numquam amet maxime quas
-            consequatur explicabo maiores distinctio sint cupiditate, voluptatem accusantium culpa a sit saepe
-            corrupti consequuntur eligendi.</p>
-          <a href="#">more</a>
-
-
-        </article>
-      </div>
-    </div>
+    
   </section>
 </div>
 </section>
 </template>
-<script setup lang="ts"></script>
+<script setup lang="ts">
+const {data:experiences}=useFetch("/api/experience")
+</script>
 
 <style scoped lang="css">
 

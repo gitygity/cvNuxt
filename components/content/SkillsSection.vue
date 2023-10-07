@@ -10,32 +10,11 @@
     <div class="card">
       <section>
         <div class="skills-container">
-          <div class="progress-container">
-            <span class="progress-title"><abbr>HTML</abbr></span>
-            <span class="progress-percent">80%</span>
+          <div v-for="(skill, index) in skills" :key="index" class="progress-container">
+            <span class="progress-title"><abbr>{{ skill?.skill }}</abbr></span>
+            <span class="progress-percent">{{ skill?.percent }}%</span>
             <div class="progress-gutter">
-              <div style="width: 80%" class="progress-bar"></div>
-            </div>
-          </div>
-          <div class="progress-container">
-            <span class="progress-title"><abbr>CSS</abbr></span>
-            <span class="progress-percent">50%</span>
-            <div class="progress-gutter">
-              <div style="width: 50%" class="progress-bar"></div>
-            </div>
-          </div>
-          <div class="progress-container">
-            <span class="progress-title">TYPESCRIPT</span>
-            <span class="progress-percent">30%</span>
-            <div class="progress-gutter">
-              <div style="width: 30%" class="progress-bar"></div>
-            </div>
-          </div>
-          <div class="progress-container">
-            <span class="progress-title">REACTJS</span>
-            <span class="progress-percent">10%</span>
-            <div class="progress-gutter">
-              <div style="width: 10%" class="progress-bar"></div>
+              <div :style="{ width: skill?.percent + '%' }" class="progress-bar"></div>
             </div>
           </div>
         </div>
@@ -43,7 +22,9 @@
     </div>
   </section>
 </template>
-<script setup lang="ts"></script>
+<script setup lang="ts">
+const {data:skills}=useFetch("/api/skill")
+</script>
 
 <style scoped lang="css">
 .progress-gutter {
@@ -73,8 +54,8 @@
   color: #378c3f;
   font-weight: bold;
   padding: 1rem 0rem;
-  display: inline-block;
-  /* float: right; */
+  /* display: inline-block; */
+   float: right; 
 }
 .skills-container::after {
   width: 100%;
