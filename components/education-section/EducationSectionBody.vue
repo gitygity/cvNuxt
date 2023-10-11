@@ -1,13 +1,4 @@
 <template>
-  <section id="education" class="education-section">
-    <div class="content">
-      <header class="center-title">
-        <h2 class="title-education">Education</h2>
-        <p class="education-subtitle">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus laudantium veniam
-          atque est quod.
-        </p>
-      </header>
       <div v-for="(education, index) in educations" :key="index" class="card-education">
         <div class="top-section">
           <p>{{education?.startDate+" - "+education?.endDate}}</p>
@@ -18,9 +9,6 @@
           <p>{{ education?.description }}</p>
         </div>
       </div>
-
-    </div>
-  </section>
 </template>
 
 <script setup lang="ts">
@@ -63,60 +51,6 @@ const {data:educations}=await useFetch('/api/education')
   display: inline-block;
 }
 
-.education-section {
-  background-image: linear-gradient(0deg, rgba(44, 44, 44, 0.644), rgba(4, 52, 9, 0.6)),
-    url(../../assets/images/light-bl.svg), url(../../assets/images/light-br.svg),
-    url(../../assets/images/overlay.png), url(../../assets/images/header2.jpg);
-  background-position:
-    top,
-    left bottom,
-    right bottom,
-    left top,
-    left bottom;
-  background-repeat: repeat, no-repeat, no-repeat, repeat, no-repeat;
-  background-size: auto, 20rem, 20rem, auto, cover;
-  background-attachment: fixed, fixed, fixed, fixed, fixed;
-  padding-bottom: 6rem;
-}
-
-.education-subtitle {
-  color: #87d587;
-  font-size: large;
-  font-weight: 400;
-  text-align: center;
-  padding: 0 2rem;
-}
-.title-education {
-  font-weight: 700;
-  color: rgb(228, 236, 228);
-  font-size: 45px;
-  margin: 3rem 0 2rem;
-  position: relative;
-  display: inline-block;
-  z-index: 1;
-}
-
-.title-education::after {
-  content: '';
-  position: absolute;
-  top: -10px;
-  left: -20px;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  background: rgba(246, 255, 247, 0.48);
-  z-index: -1;
-  opacity: 0.5;
-}
-
-.center-title {
-  text-align: center;
-}
-.content {
-  width: 90vw;
-  margin: 1rem auto 0;
-}
-
 /* Big screen devices (889px and above) */
 @media only screen and (min-width: 889px) {
   .top-section {
@@ -149,13 +83,6 @@ const {data:educations}=await useFetch('/api/education')
     margin-top: 2rem;
     flex-direction: row;
     height: 9rem;
-  }
-}
-
-/* Extra big screen devices (1200px and above) */
-@media only screen and (min-width: 1200px) {
-  .content {
-    width: 50vw;
   }
 }
 </style>

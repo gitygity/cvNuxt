@@ -3,6 +3,6 @@ export default defineEventHandler((event) => {
     firstName: "Gity",
     lastName: "Ghasemi",
     stack: "FrontEnd Developer",
-    image: "",
+    image:"/_nuxt/assets/images/p1.png"
   };
 });

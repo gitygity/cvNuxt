@@ -1,18 +1,14 @@
 <template>
-<section id="experience" class="content">
-<div class="card  ">
-  <header class="center-title">
-    <h2 class="title">Work Experience</h2>
-    <p class="section-subtitle">Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus laudantium
-      veniam atque est quod.</p>
-  </header>
-
   <section class="ac-container">
     <div v-for="(experience, index) in experiences" :key="index" class="ac-item">
-      <div class="year-badge-container"><span class="year-badge">{{experience?.startDate+" - "+experience?.endDate}}</span></div>
+      <div class="year-badge-container">
+        <span class="year-badge">{{
+          experience?.startDate + " - " + experience?.endDate
+        }}</span>
+      </div>
       <div class="ac-item-detail">
-        <input :id="'ac-' + index+1"  type="checkbox" :checked="index===0">
-        <label class="ac-icon" :for="'ac-' + index+1"></label>
+        <input :id="'ac-' + index + 1" type="checkbox" :checked="index === 0" />
+        <label class="ac-icon" :for="'ac-' + index + 1"></label>
         <article class="ac-content">
           <h1>{{ experience?.company }}</h1>
           <span>{{ experience?.stack }}</span>
@@ -21,17 +17,14 @@
         </article>
       </div>
     </div>
-    
   </section>
-</div>
-</section>
 </template>
+
 <script setup lang="ts">
-const {data:experiences}=useFetch("/api/experience")
+const { data: experiences } = useFetch("/api/experience");
 </script>
 
 <style scoped lang="css">
-
 .year-badge-container {
   flex: 100%;
   text-align: right;
@@ -66,18 +59,18 @@ const {data:experiences}=useFetch("/api/experience")
 }
 
 .ac-container input:not(:checked) + .ac-icon::after {
-  font-family: 'Font Awesome 5 Free';
-  content: '\2b';
+  font-family: "Font Awesome 5 Free";
+  content: "\2b";
 }
 
 .ac-container input:checked + .ac-icon::after {
-  font-family: 'Font Awesome 5 Free';
-  content: '\2212';
+  font-family: "Font Awesome 5 Free";
+  content: "\2212";
 }
 
 .ac-container .ac-item-detail::before {
   border-left: 0.15rem dashed #898888;
-  content: '';
+  content: "";
   height: 100%;
   left: 1rem;
   opacity: 0.6;
@@ -145,22 +138,10 @@ const {data:experiences}=useFetch("/api/experience")
   .ac-container input:checked ~ article.ac-content {
     height: 16rem;
   }
-  .card {
-    padding: 2rem;
-  }
-  
 }
 
 /* Medium screen devices (768px and above) */
 @media only screen and (min-width: 768px) {
-  .title {
-    font-size: 3rem;
-  }
-
-  .card section {
-    padding: 1rem 0;
-  }
-
   .ac-item-detail {
     flex: 80%;
   }
@@ -188,64 +169,5 @@ const {data:experiences}=useFetch("/api/experience")
     margin: 3rem auto 1rem auto;
     position: relative;
   }
-
 }
-
-/* Extra big screen devices (1200px and above) */
-@media only screen and (min-width: 1200px) {
-  .content {
-    width: 50vw;
-  }
-
-}
-
-/*//_____________public*/
-.card section {
-  padding: 1rem 0;
-}
-.center-title {
-  text-align: center;
-}
-.content {
-       width: 90vw;
-       margin: 1rem auto 0;
-   }
-
-   .card {
-  padding: 2rem;
-  margin: 3rem 0rem;
-  border-radius: 0.2rem;
-  box-shadow: 0px 5px 25px 0px rgba(0, 0, 0, 0.2);
-}
-.title {
-  font-weight: 700;
-  color: rgb(96, 97, 97);
-  font-size: 1.5rem;
-  margin: 0 0 2rem;
-  position: relative;
-  display: inline-block;
-  z-index: 1;
-  text-align: center;
-  margin-top: 2rem;
-}
-
-.section-subtitle {
-  color: #5e7d5e;
-  font-size: large;
-  font-weight: 400;
-  text-align: center;
-}
-.title::after {
-  content: '';
-  position: absolute;
-  top: -10px;
-  left: -20px;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  background: rgba(55, 140, 63, 0.4);
-  z-index: -1;
-  opacity: 0.5;
-}
-
 </style>

@@ -1,8 +1,5 @@
 <template >
-  <section>
-    <footer>
-      <div class="footer-social-media">
-        <ul>
+    <ul class="footer-social-wrapper">
           <li>
             <a href="#"><i class="footer-social-icon fa-brands fa-twitter"></i> </a>
           </li>
@@ -16,35 +13,15 @@
             <a href="#"><i class="footer-social-icon fa-brands fa-github"></i></a>
           </li>
         </ul>
-
-        <h2>Gity Ghasemi</h2>
-        <div class="copy-right">
-          <p>© GityGhasemi. All rights reserved.<br />Design - CV</p>
-        </div>
-      </div>
-    </footer>
-  </section>
 </template>
-<script setup lang="ts"></script>
-<style scoped lang="css">
-footer{
-  height: auto;
-  padding: 1rem 0rem;
-  background-color: rgb(66, 67, 69);
-}
-.footer-social-media {
-  color: white;
-  text-align: center;
-  width: 100%;
-  margin: 1rem 0rem;
-}
 
-.footer-social-media ul > li {
+<style scoped lang="css">
+.footer-social-wrapper > li {
   float: left;
   font-size: x-large;
 }
 
-.footer-social-media ul {
+.footer-social-wrapper {
   display: inline-block;
 }
 
@@ -57,8 +34,5 @@ footer{
   background-color: rgba(197, 194, 194, 0.5);
 }
 
-.copy-right > * {
-  display: inline-block;
-  text-align: center;
-}
+
 </style>

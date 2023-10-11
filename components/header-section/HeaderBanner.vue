@@ -2,7 +2,9 @@
   <div class="banner-container">
     <section id="banner">
       <div class="head-content">
-        <a class="img-container" href="#"><img src="../../assets/images/p1.png" alt="Image" /></a>
+        <a class="img-container" href="#">
+          <img :src="user?.image" alt="Image" />
+          </a>
         <h1 class="user-name"> {{ user?.firstName+" "+user?.lastName }}</h1>
         <h4 class="specialty">{{user?.stack}}</h4>
         <div>

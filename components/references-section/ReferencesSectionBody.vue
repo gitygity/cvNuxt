@@ -1,16 +1,8 @@
 <template>
-  <section id="references" class="content">
-    <header class="center-title">
-      <h2 class="title">References</h2>
-      <p class="section-subtitle">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus laudantium veniam
-        atque est quod.
-      </p>
-    </header>
     <div class="card">
       <div  v-for="(refer,index) in references" :key="index"  class="refere-container">
         <div class="info-refer">
-          <img class="refer-thumbnail" src="../../assets/images/p1.png" :alt="'person'+index" />
+          <img class="refer-thumbnail" :src="refer?.image" :alt="'person'+index" />
           <div class="refer-name">
             <h4>{{ refer?.firstName+" "+refer?.lastName }}</h4>
             <span>{{ refer?.stack }}</span>
@@ -25,11 +17,10 @@
       </div>
       
     </div>
-  </section>
 </template>
+
 <script setup lang="ts">
 const {data:references}=useFetch("/api/references")
-
 </script>
 
 <style scoped lang="css">
@@ -84,9 +75,6 @@ const {data:references}=useFetch("/api/references")
 
 /* Medium screen devices (768px and above) */
 @media only screen and (min-width: 768px) {
-  .title {
-    font-size: 3rem;
-  }
 
   .card section {
     padding: 1rem 0;
@@ -107,22 +95,8 @@ const {data:references}=useFetch("/api/references")
   }
 }
 
-/* Extra big screen devices (1200px and above) */
-@media only screen and (min-width: 1200px) {
-  .content {
-    width: 50vw;
-  }
-}
-
 .card section {
   padding: 1rem 0;
-}
-.center-title {
-  text-align: center;
-}
-.content {
-  width: 90vw;
-  margin: 1rem auto 0;
 }
 
 .card {
@@ -131,34 +105,5 @@ const {data:references}=useFetch("/api/references")
   border-radius: 0.2rem;
   box-shadow: 0px 5px 25px 0px rgba(0, 0, 0, 0.2);
 }
-.title {
-  font-weight: 700;
-  color: rgb(96, 97, 97);
-  font-size: 1.5rem;
-  margin: 0 0 2rem;
-  position: relative;
-  display: inline-block;
-  z-index: 1;
-  text-align: center;
-  margin-top: 2rem;
-}
 
-.section-subtitle {
-  color: #5e7d5e;
-  font-size: large;
-  font-weight: 400;
-  text-align: center;
-}
-.title::after {
-  content: '';
-  position: absolute;
-  top: -10px;
-  left: -20px;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  background: rgba(55, 140, 63, 0.4);
-  z-index: -1;
-  opacity: 0.5;
-}
 </style>
