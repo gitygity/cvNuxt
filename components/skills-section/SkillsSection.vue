@@ -1,29 +1,11 @@
 <template>
   <section id="skills" class="content">
-    <header class="center-title">
-      <h2 class="title">Professional Skills</h2>
-      <p class="section-subtitle">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus laudantium veniam
-        atque est quod.
-      </p>
-    </header>
-    <div class="card">
-      <section>
-        <div class="skills-container">
-          <div v-for="(skill, index) in skills" :key="index" class="progress-container">
-            <span class="progress-title"><abbr>{{ skill?.skill }}</abbr></span>
-            <span class="progress-percent">{{ skill?.percent }}%</span>
-            <div class="progress-gutter">
-              <div :style="{ width: skill?.percent + '%' }" class="progress-bar"></div>
-            </div>
-          </div>
-        </div>
-      </section>
-    </div>
+   <SkillsSectionHeader></SkillsSectionHeader>
+   <SkillsSectionBody></SkillsSectionBody>
   </section>
 </template>
 <script setup lang="ts">
-const {data:skills}=useFetch("/api/skill")
+
 </script>
 
 <style scoped lang="css">

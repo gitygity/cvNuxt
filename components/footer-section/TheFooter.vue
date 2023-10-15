@@ -2,12 +2,18 @@
   <section>
     <footer>
       <div class="footer-social-media">
-       <TheFooterSocial></TheFooterSocial>
-       <TheFooterCopyRight></TheFooterCopyRight>
+    <TheFooterSocial></TheFooterSocial>
+    <TheFooterCopyRight></TheFooterCopyRight>
       </div>
     </footer>
   </section>
 </template> 
+
+<script setup lang="ts">
+import TheFooterSocial from './TheFooterSocial.vue';
+import TheFooterCopyRight from './TheFooterCopyRight.vue';
+</script>
+
 
 <style scoped lang="css">
 

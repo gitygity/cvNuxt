@@ -1,16 +1,28 @@
 <template >
     <ul class="footer-social-wrapper">
           <li>
-            <a href="#"><i class="footer-social-icon fa-brands fa-twitter"></i> </a>
+            <a href="#"> <font-awesome-icon class="footer-social-icon" icon="fa-solid fa-bars" />
+            <!-- <i class="footer-social-icon fa-brands fa-twitter"></i> -->
+             </a>
           </li>
           <li>
-            <a href="#"><i class="footer-social-icon fa-brands fa-instagram"></i></a>
+            <a href="#">
+              <font-awesome-icon class="footer-social-icon" icon="fa-solid fa-bars" />
+            <!-- <i class="footer-social-icon fa-brands fa-instagram">
+            </i> -->
+            </a>
           </li>
           <li>
-            <a href="#"><i class="footer-social-icon fa-brands fa-linkedin"></i></a>
+            <a href="#">
+            <!-- <i class="footer-social-icon fa-brands fa-linkedin"></i> -->
+            <font-awesome-icon class="footer-social-icon" icon="fa-solid fa-bars" />
+            </a>
           </li>
           <li>
-            <a href="#"><i class="footer-social-icon fa-brands fa-github"></i></a>
+            <a href="#">
+            <!-- <i class="footer-social-icon fa-brands fa-github"></i> -->
+            </a>
+            <font-awesome-icon class="footer-social-icon" icon="fa-solid fa-bars" />
           </li>
         </ul>
 </template>

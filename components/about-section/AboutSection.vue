@@ -1,15 +1,15 @@
 <template>
   <section id="about" class="content">
     <div class="card">
-      <SummeryExperience></SummeryExperience>
-      <BasicInfo></BasicInfo>
+      <AboutSectionSummery></AboutSectionSummery>
+      <AboutSectionBasicInfo></AboutSectionBasicInfo>
     </div>
   </section>
 </template>
 
 <script setup lang="ts">
-import BasicInfo from "./BasicInfo.vue";
-import SummeryExperience from "./SummeryExperience.vue";
+import AboutSectionBasicInfo from "./AboutSectionBasicInfo.vue";
+import AboutSectionSummery from "./AboutSectionSummery.vue";
 </script>
 
 <style scoped lang="css">

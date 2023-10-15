@@ -1,6 +1,8 @@
 <template>
+   <TheHeader></TheHeader>
   <main>
-    <BaseInfoSection></BaseInfoSection>
+ 
+    <AboutSection></AboutSection>
     <SkillsSection></SkillsSection>
     <PortfolioSection></PortfolioSection>
     <ExperienceSection></ExperienceSection>
@@ -8,16 +10,19 @@
     <ReferencesSection></ReferencesSection>
   </main>
   <ContactSection></ContactSection>
+  <TheFooter></TheFooter>
 </template>
 
 <script setup lang="ts">
 import {EducationSection} from '~/components/education-section'
 import {ExperienceSection} from '~/components/experience-section'
 import {PortfolioSection} from '~/components/portfolio-section'
-import {ReferencesSection} from '~/components/references-setion'
+import {ReferencesSection} from '~/components/references-section'
 import {SkillsSection} from '~/components/skills-section'
 import {ContactSection} from '~/components/contact-section'
 import { AboutSection } from '~/components/about-section'
+import { TheHeader } from '~/components/header-section'
+import { TheFooter } from '~/components/footer-section'
 
 definePageMeta({
   middleware: "is-authorized",

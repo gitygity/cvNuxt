@@ -1,70 +1,12 @@
 <template>
   <section id="portfolio" class="portfolio-section">
     <PortfolioSectionHeader></PortfolioSectionHeader>
-    <div class="switch-portfolio">
-      <ul>
-        <li>
-          <a class="switch-link swtich-active" href="#">  <font-awesome-icon class="social-icon" icon="fa-solid fa-laptop" /></a>
-        </li>
-        <li>
-          <a class="switch-link" href="#"> <font-awesome-icon class="social-icon" icon="fa-solid fa-image" /></a>
-        </li>
-        <li>
-          <a class="switch-link" href="#"><font-awesome-icon class="social-icon" icon="fa-solid fa-camera" /></a>
-        </li>
-      </ul>
-    </div>
-    <div class="portfolio-container">
-      <div class="portfolio-column">
-        <article v-for="(portfolio, index) in firstHalf" :key="index" class="portfolio-item">
-          <img :src="portfolio?.cover" />
-          <div class="overly-portfolio">
-            <div class="portfolio-text">
-              <div class="portfolio-info">
-                <h1><a class="portfolio-link" href="#">{{portfolio?.title}}</a></h1>
-                <span class="portfolio-subtitle">{{portfolio?.subTitle}}</span>
-                <div class="tag-container">
-                  <span v-for="(tech, index) in portfolio?.technologies " :key="index" class="portfolio-tag">{{tech}}</span>
-                </div>
-              </div>
-              <a class="portfolio-more" href="#">
-                <span>More</span>
-                 <font-awesome-icon class="icon-more-portfolio" icon="fa-solid fa-arrow-right" />
-              </a>
-            </div>
-          </div>
-        </article>
-      </div>
-
-      <div class="portfolio-column">
-        <article v-for="(portfolio, index) in secondHalf" :key="index" class="portfolio-item">
-          <img :src="portfolio?.cover" />
-          <div class="overly-portfolio">
-            <div class="portfolio-text">
-              <div class="portfolio-info">
-                <h1><a class="portfolio-link" href="#">{{portfolio?.title}}</a></h1>
-                <span class="portfolio-subtitle">{{portfolio?.subTitle}}</span>
-                <div class="tag-container">
-                  <span v-for="(tech, index) in portfolio?.technologies " :key="index" class="portfolio-tag">{{tech}}</span>
-                </div>
-              </div>
-              <a class="portfolio-more" href="#">
-                <span>More</span>
-                 <font-awesome-icon class="icon-more-portfolio" icon="fa-solid fa-arrow-right" />
-              </a>
-            </div>
-          </div>
-        </article>
-      </div>
-    </div>
+   <PortfolioSectionBody></PortfolioSectionBody>
   </section>
 </template>
 <script setup lang="ts">
-const {data:portfolios}=useFetch("/api/portfolio")
 
-const halfLength = Math.ceil((portfolios.value?.length||0) / 2);
-const firstHalf = ref(portfolios.value?.slice(0, halfLength));
-const secondHalf = ref(portfolios.value?.slice(halfLength));
+
 </script>
 
 <style scoped lang="css">

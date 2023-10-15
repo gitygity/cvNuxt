@@ -1,7 +1,7 @@
 <template>
   <section id="contact" class="contact-me">
     <div class="card-contact">
-      <ContactSection></ContactSection>
+      <ContactSectionHeader></ContactSectionHeader>
       <div class="form-section">
         <ContactSectionForm></ContactSectionForm>
         <ContactSectionAddress></ContactSectionAddress>
