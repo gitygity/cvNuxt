@@ -1,6 +1,7 @@
 <template>
   <section id="about" class="content">
     <div class="card">
+      <IconButton @click="handleClick"></IconButton>
       <AboutSectionSummery></AboutSectionSummery>
       <AboutSectionBasicInfo></AboutSectionBasicInfo>
     </div>
@@ -10,6 +11,12 @@
 <script setup lang="ts">
 import AboutSectionBasicInfo from "./AboutSectionBasicInfo.vue";
 import AboutSectionSummery from "./AboutSectionSummery.vue";
+import {IconButton} from "../shared"
+
+
+const handleClick=()=>{
+  console.log("clicked about")
+}
 </script>
 
 <style scoped lang="css">

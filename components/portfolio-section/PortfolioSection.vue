@@ -1,12 +1,15 @@
 <template>
   <section id="portfolio" class="portfolio-section">
+    <IconButton @click="handleClick"></IconButton>
     <PortfolioSectionHeader></PortfolioSectionHeader>
    <PortfolioSectionBody></PortfolioSectionBody>
   </section>
 </template>
 <script setup lang="ts">
-
-
+import {IconButton} from "../shared"
+const handleClick=()=>{
+  console.log("clicked port")
+}
 </script>
 
 <style scoped lang="css">

@@ -57,7 +57,7 @@
     </div>
 </template>
 <script setup lang="ts">
-const {data:portfolios}=useFetch("/api/portfolio")
+const {data:portfolios}=useFetch("/api/portfolio/portfolio")
 
 const halfLength = Math.ceil((portfolios.value?.length||0) / 2);
 const firstHalf = ref(portfolios.value?.slice(0, halfLength));

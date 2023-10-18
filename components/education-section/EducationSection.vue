@@ -1,12 +1,18 @@
 <template>
-  <section id="education" class="education-section">
+  <section id="education" class=" education-section">
+    <IconButton color="text-slate-100" @click="handleClick"></IconButton>
     <div class="content">
     <EducationSectionHeader></EducationSectionHeader>
      <EducationSectionBody></EducationSectionBody>
     </div>
   </section>
 </template>
-
+<script setup lang="ts">
+import {IconButton} from "../shared"
+const handleClick=()=>{
+  console.log("clicked education")
+}
+</script>
 <style scoped lang="css">
 .education-section {
   background-image: linear-gradient(0deg, rgba(44, 44, 44, 0.644), rgba(4, 52, 9, 0.6)),

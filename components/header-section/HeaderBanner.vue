@@ -19,19 +19,20 @@
           <li>
             <a href="#">
               <!-- <font-awesome-icon class="social-icon" icon="fa-solid fa-twitter" /> -->
-              <font-awesome-icon class="social-icon" icon="fa-solid fa-bars" />
+              <FontAwesomeIcon class="social-icon" icon="fa-solid fa-bars" ></FontAwesomeIcon>
               </a>
           </li>
           <li>
-            <font-awesome-icon class="social-icon" icon="fa-solid fa-bars" />
+            <!-- <font-awesome-icon class="social-icon" icon="fa-solid fa-instagram" /> -->
+            <FontAwesomeIcon class="social-icon" icon="fa-solid fa-edit"></FontAwesomeIcon>
             <!-- <a href="#"> <font-awesome-icon  class="social-icon" icon="fa-solid fa-instagram" /></a> -->
           </li>
           <li>
-            <font-awesome-icon class="social-icon" icon="fa-solid fa-bars" />
+            <FontAwesomeIcon class="social-icon" icon="fa-solid fa-bars" ></FontAwesomeIcon>
             <!-- <a href="#"><font-awesome-icon  class="social-icon" icon=" fa-solid fa-linkedin" /></a> -->
           </li>
           <li>
-            <font-awesome-icon class="social-icon" icon="fa-solid fa-bars" />
+            <FontAwesomeIcon class="social-icon" icon="fa-solid fa-bars" ></FontAwesomeIcon>
             <!-- <a href="#"> <font-awesome-icon  class="social-icon" icon="fa-brands fa-solid fa-github" /></a> -->
           </li>
         </ul>
@@ -40,8 +41,8 @@
   </div>
 </template>
 <script lang="ts" setup>
-
-const { data: user } = await useFetch('/api/user')
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
+const { data: user } = await useFetch('/api/user/user')
 
 </script>
 

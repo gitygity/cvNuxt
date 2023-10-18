@@ -1,10 +1,15 @@
 <template>
   <div class="custom">
-    <HeaderCv></HeaderCv>
+    <TheHeader></TheHeader>
     <slot />
-    <FooterCv></FooterCv>
+    <TheFooter></TheFooter>
   </div>
 </template>
+
+<script setup lang="ts">
+import  {TheHeader}  from '~/components/header-section'
+import  {TheFooter}  from '~/components/footer-section'
+</script>
 
 <style scoped>
 .custom {

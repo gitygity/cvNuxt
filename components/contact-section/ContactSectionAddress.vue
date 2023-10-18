@@ -10,7 +10,7 @@
 </template>
 
 <script setup lang="ts">
-const { data: info } = useFetch("/api/info");
+const { data: info } = useFetch("/api/info/info");
 </script>
 
 <style scoped lang="css">

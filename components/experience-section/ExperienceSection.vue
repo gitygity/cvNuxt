@@ -1,12 +1,18 @@
 <template>
   <section id="experience" class="content">
     <div class="card">
+      <IconButton @click="handleClick"></IconButton>
       <ExperienceSectionHeader></ExperienceSectionHeader>
       <ExperienceSectionBody></ExperienceSectionBody>
     </div>
   </section>
 </template>
-
+<script setup lang="ts">
+import {IconButton} from "../shared"
+const handleClick=()=>{
+  console.log("clicked exper")
+}
+</script>
 <style scoped lang="css">
 /* Small screen devices (600px and above) */
 @media only screen and (min-width: 600px) {

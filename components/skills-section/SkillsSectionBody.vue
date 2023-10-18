@@ -1,7 +1,10 @@
 <template>
   <div class="card">
+    <IconButton @click="handleClick"></IconButton>
     <section>
+      
       <div class="skills-container">
+     
         <div v-for="(skill, index) in skills" :key="index" class="progress-container">
           <span class="progress-title"
             ><abbr>{{ skill?.skill }}</abbr></span
@@ -17,7 +20,12 @@
 </template>
 
 <script setup lang="ts">
-const { data: skills } = useFetch("/api/skill");
+import {IconButton} from "../shared"
+
+const { data: skills } = useFetch("/api/skill/skill");
+
+
+const handleClick=()=>{console.log("clicked skills")}
 </script>
 
 <style scoped lang="css">

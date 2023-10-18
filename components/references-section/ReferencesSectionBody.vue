@@ -20,8 +20,13 @@
 </template>
 
 <script setup lang="ts">
-const {data:references}=useFetch("/api/references")
+import {IconButton} from "../shared"
+const handleClick=()=>{
+  console.log("clicked education")
+}
+const {data:references}=useFetch("/api/references/references")
 </script>
+
 
 <style scoped lang="css">
 .refer-thumbnail {

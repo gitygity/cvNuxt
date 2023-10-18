@@ -1,5 +1,7 @@
 <template>
+   
       <div v-for="(education, index) in educations" :key="index" class="card-education">
+       
         <div class="top-section">
           <p>{{education?.startDate+" - "+education?.endDate}}</p>
           <h3>{{ education?.degree }}</h3>
@@ -12,7 +14,8 @@
 </template>
 
 <script setup lang="ts">
-const {data:educations}=await useFetch('/api/education')
+
+const {data:educations}=await useFetch('/api/education/education')
 </script>
 
 <style scoped lang="css">

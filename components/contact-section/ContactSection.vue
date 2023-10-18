@@ -1,6 +1,13 @@
 <template>
   <section id="contact" class="contact-me">
     <div class="card-contact">
+      <Form @submit="submit" :validation-schema="schema">
+    <Field name="email" />
+    <ErrorMessage name="email" />
+    <Field name="password" type="password" />
+    <ErrorMessage name="password" />
+    <button>Submit</button>
+  </Form>
       <ContactSectionHeader></ContactSectionHeader>
       <div class="form-section">
         <ContactSectionForm></ContactSectionForm>
@@ -10,6 +17,16 @@
   </section>
 </template>
 
+<script setup lang="ts">
+import { Field, Form, ErrorMessage } from 'vee-validate';
+import * as yup from 'yup';
+
+const schema = yup.object({
+  email: yup.string().required().email(),
+  name: yup.string().required(),
+  password: yup.string().required().min(8),
+});
+</script>
 <style scoped lang="css">
 .contact-me {
   position: static;

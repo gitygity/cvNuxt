@@ -11,7 +11,7 @@
 </template>
 
 <script setup lang="ts">
-const { data: info } = await useFetch("/api/info");
+const { data: info } = await useFetch("/api/info/info");
 </script>
 
 <style scoped lang="css">

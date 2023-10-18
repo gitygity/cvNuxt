@@ -16,5 +16,5 @@
 </template>
 
 <script setup lang="ts">
-const { data: user } = await useFetch("/api/user");
+const { data: user } = await useFetch("/api/user/user");
 </script>

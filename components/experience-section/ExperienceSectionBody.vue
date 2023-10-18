@@ -21,7 +21,7 @@
 </template>
 
 <script setup lang="ts">
-const { data: experiences } = useFetch("/api/experience");
+const { data: experiences } = useFetch("/api/experience/experience");
 </script>
 
 <style scoped lang="css">
