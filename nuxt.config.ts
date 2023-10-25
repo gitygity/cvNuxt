@@ -6,6 +6,9 @@ export default defineNuxtConfig({
   ], modules: [
     '@vee-validate/nuxt',
   ] ,
+  plugins: [
+    '~/plugins/event-bus.ts',
+  ],
   veeValidate: {
     // disable or enable auto imports
     autoImports: true,

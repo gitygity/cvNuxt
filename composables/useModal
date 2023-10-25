@@ -1,0 +1,5 @@
+// export gg=9
+// const emit=defineEmits<{
+    //     (e: 'open',dataModal:OpenModalType): void
+    //  }>()
+    

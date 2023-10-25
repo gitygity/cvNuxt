@@ -1,5 +1,5 @@
 <template>
-  <div class="modal-body">
+  <div class="p-1">
       <slot/>
   </div>
 </template>

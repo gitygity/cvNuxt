@@ -7,32 +7,35 @@
     :close="modal.close"
     :dismiss="modal.dismiss"
     :props="modal.props"
-    :class="{'d-block':modal.component}"
+    :class="{'block':modal.component}"
     />
     </Transition>
   </section>
 </template>
 
-<script setup>
-import ModalService from "../services/modal.service";
-import Modal from "./Modal.vue";
+<script lang="ts" setup>
+import { ModalType, OpenModalType } from "./modalTypes";
+import Modal from "./Modal.vue"
 
-let modal = {};
+let modal:ModalType = {};
+const { $listen } = useNuxtApp()
 
-ModalService.$on("open", ({ component, props, resolve, reject }) => {
-  this.modal = {
+$listen("modal:open", ({ component, props, resolve, reject }:OpenModalType) => {
+  console.log("cccccccccc",component, props, resolve, reject)
+  modal = {
     component,
     props,
     close: (value) => {
-      this.modal = {};
+      modal = {};
       resolve(value);
     },
     dismiss: (reason) => {
-      this.modal = {};
+      modal = {};
       reject(reason);
     },
   };
 });
+
 </script>
 
 <style lang="css" scoped>
@@ -55,4 +58,6 @@ ModalService.$on("open", ({ component, props, resolve, reject }) => {
   transform: translateY(25px);
   opacity: 0;
 }
+
+
 </style>
