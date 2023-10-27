@@ -2,13 +2,13 @@
   <main>
  
     <AboutSection></AboutSection>
-    <SkillsSection></SkillsSection>
+    <!-- <SkillsSection></SkillsSection>
     <PortfolioSection></PortfolioSection>
     <ExperienceSection></ExperienceSection>
     <EducationSection></EducationSection>
-    <ReferencesSection></ReferencesSection>
+    <ReferencesSection></ReferencesSection> -->
   </main>
-  <ContactSection></ContactSection>
+  <!-- <ContactSection></ContactSection> -->
 </template>
 
 <script setup lang="ts">

@@ -1,24 +1,37 @@
-<template>
-  <section id="about" class="content">
-    <div class="card">
-      <IconButton @click="handleClick"></IconButton>
-      <AboutSectionSummery></AboutSectionSummery>
-      <AboutSectionBasicInfo></AboutSectionBasicInfo>
-    </div>
-  </section>
-</template>
+
 
 <script setup lang="ts">
 import AboutSectionBasicInfo from "./AboutSectionBasicInfo.vue";
 import AboutSectionSummery from "./AboutSectionSummery.vue";
 import {IconButton} from "../shared"
+import AboutSectionForm from "./AboutSectionForm.vue";
+import { Teleport } from "vue";
 
 
-const handleClick=()=>{
-  console.log("clicked about")
+//_____________________________________refs
+const isShowAboutSectionModal=ref(false)
+
+
+const toggleShowDialog=()=>{
+  isShowAboutSectionModal.value=!isShowAboutSectionModal.value
 }
 </script>
+<template>
+  <section id="about" class="content">
+    <div class="card">
+      <IconButton @click="toggleShowDialog"></IconButton>
+      <AboutSectionSummery></AboutSectionSummery>
+      <AboutSectionBasicInfo></AboutSectionBasicInfo>
+      <Teleport  to="body">
+       <AboutSectionForm v-if="isShowAboutSectionModal"/>
+      </Teleport>
+      <button @click="isShowAboutSectionModal = true">
+    Open Modal
+  </button>
 
+    </div>
+  </section>
+</template>
 <style scoped lang="css">
 .content {
   width: 90vw;
