@@ -1,24 +1,18 @@
 <template>
-  <Feild
+  <textarea
     :name="name"
+    rows="4"
+    cols="50"
     class="form-control"
-    type="text"
+    type="textarea"
     :placeholder="placeholder"
   />
-  <span v-if="errorMessage && meta.touched">
-    {{ errorMessage }}
-  </span>
 </template>
 
 <script setup lang="ts">
-import { useField } from "vee-validate";
-const { value, errorMessage, resetField, meta, setErrors, handleChange } =
-  useField(name, validateYup);
-
 interface TextInputPropsType {
   placeholder: string;
   name: string;
-  validateYup: Function;
 }
 const props = withDefaults(defineProps<TextInputPropsType>(), {
   label: "Default",

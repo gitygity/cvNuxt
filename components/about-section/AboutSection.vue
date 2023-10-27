@@ -1,20 +1,17 @@
-
-
 <script setup lang="ts">
 import AboutSectionBasicInfo from "./AboutSectionBasicInfo.vue";
 import AboutSectionSummery from "./AboutSectionSummery.vue";
-import {IconButton} from "../shared"
+import { IconButton } from "../shared";
 import AboutSectionForm from "./AboutSectionForm.vue";
 import { Teleport } from "vue";
 
-
 //_____________________________________refs
-const isShowAboutSectionModal=ref(false)
+const isShowAboutSectionModal = ref(true);
+const isEdit = ref(false);
 
-
-const toggleShowDialog=()=>{
-  isShowAboutSectionModal.value=!isShowAboutSectionModal.value
-}
+const toggleShowDialog = () => {
+  isShowAboutSectionModal.value = !isShowAboutSectionModal.value;
+};
 </script>
 <template>
   <section id="about" class="content">
@@ -22,13 +19,9 @@ const toggleShowDialog=()=>{
       <IconButton @click="toggleShowDialog"></IconButton>
       <AboutSectionSummery></AboutSectionSummery>
       <AboutSectionBasicInfo></AboutSectionBasicInfo>
-      <Teleport  to="body">
-       <AboutSectionForm v-if="isShowAboutSectionModal"/>
+      <Teleport to="body">
+        <AboutSectionForm :isEdit="isEdit" v-if="isShowAboutSectionModal" />
       </Teleport>
-      <button @click="isShowAboutSectionModal = true">
-    Open Modal
-  </button>
-
     </div>
   </section>
 </template>

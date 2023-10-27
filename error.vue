@@ -9,7 +9,7 @@
 </template>
 
 <script setup>
-const handleError=()=>clearError({redirect:"/"})
+const handleError = () => clearError({ redirect: "/" });
 definePageMeta({
   layout: "error-layout",
 });
