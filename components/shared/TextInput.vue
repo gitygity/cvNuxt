@@ -1,29 +1,29 @@
 <template>
-  <Feild
+  <input
     :name="name"
     class="form-control"
     type="text"
     :placeholder="placeholder"
+    :id="name"
+    :value="value"
+    @input="$emit('input', $event.target.value)"
+    @blur="$emit('validate')"
+    @keypress="$emit('validate')"
   />
-  <span v-if="errorMessage && meta.touched">
+  <span role="alert" v-if="errorMessage && meta.touched">
     {{ errorMessage }}
   </span>
 </template>
 
 <script setup lang="ts">
 import { useField } from "vee-validate";
-const { value, errorMessage, resetField, meta, setErrors, handleChange } =
-  useField(name, validateYup);
+import { TextInputPropsType } from "./types/textInputTypes";
 
-interface TextInputPropsType {
-  placeholder: string;
-  name: string;
-  validateYup: Function;
-}
 const props = withDefaults(defineProps<TextInputPropsType>(), {
   label: "Default",
   name: "Default",
 });
+const { value, errorMessage,errors, meta, setErrors, setValue } = useField(props.name,value => !!value);
 </script>
 
 <style lang="css">

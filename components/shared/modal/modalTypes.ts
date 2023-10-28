@@ -5,9 +5,19 @@ export interface ModalType {
   dismiss?: (reason: string) => void;
 }
 
+export interface HeaderPropsType {
+  title: string;
+}
 export interface ModalRootPropsType {
-  close: Function;
-  dismiss: Function;
+  // close: ()=>void;
   icon: string;
   title: string;
+}
+
+export interface HeaderEmitsType{
+  (e:"close"):void
+}
+
+export interface ModalRootEmitsType{
+  (e:"close"):void
 }

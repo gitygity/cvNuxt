@@ -8,26 +8,19 @@
 
 <script setup lang="ts">
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
+import { IconButtonPropsType,IconButtonEmitsType } from './types/iconButtonTypes';
 
 
-export interface IconButtonPropsType{
-    color?:string,
-    icon?:string
-}
 
 const props = withDefaults(defineProps<IconButtonPropsType>(),{
     color:"text-gray-700",
     icon:"fa-solid fa-pen-to-square"
 });
-const emit=defineEmits({
-    click:null
-})
+
+const emit=defineEmits<IconButtonEmitsType>()
 
 const handleClickIconButton=()=>{
     emit('click');
 }
 </script>
 
-<style lang="css">
-    
-</style>

@@ -3,6 +3,7 @@ import AboutSectionBasicInfo from "./AboutSectionBasicInfo.vue";
 import AboutSectionSummery from "./AboutSectionSummery.vue";
 import { IconButton } from "../shared";
 import AboutSectionForm from "./AboutSectionForm.vue";
+import {AboutFormInputType} from "./AboutSectionTypes"
 import { Teleport } from "vue";
 
 //_____________________________________refs
@@ -12,6 +13,7 @@ const isEdit = ref(false);
 const toggleShowDialog = () => {
   isShowAboutSectionModal.value = !isShowAboutSectionModal.value;
 };
+const handleApplyAboutSectionForm=(data:AboutFormInputType)=>{}
 </script>
 <template>
   <section id="about" class="content">
@@ -20,12 +22,24 @@ const toggleShowDialog = () => {
       <AboutSectionSummery></AboutSectionSummery>
       <AboutSectionBasicInfo></AboutSectionBasicInfo>
       <Teleport to="body">
-        <AboutSectionForm :isEdit="isEdit" v-if="isShowAboutSectionModal" />
+        <Transition mode="in-out">
+        <AboutSectionForm @apply="handleApplyAboutSectionForm" @close="toggleShowDialog" :isEdit="isEdit" v-if="isShowAboutSectionModal" />
+        </Transition>
       </Teleport>
     </div>
   </section>
 </template>
-<style scoped lang="css">
+<style scoped lang="postcss">
+.v-enter-active,
+.v-leave-active {
+  transition: all 0.25s ease-in-out;
+}
+
+.v-enter-from,
+.v-leave-to {
+  opacity: 0;
+  transform: translateX(-10vw);
+}
 .content {
   width: 90vw;
   margin: 1rem auto 0;

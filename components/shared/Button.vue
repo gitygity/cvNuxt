@@ -5,19 +5,14 @@
 </template>
 
 <script setup lang="ts">
-
-export interface IconButtonPropsType{
-    label:string
-}
+import type { ButtonEmitsType, IconButtonPropsType } from './types/buttonTypes';
 
 
-const props = withDefaults(defineProps<IconButtonPropsType>(),{
+withDefaults(defineProps<IconButtonPropsType>(),{
    label:"Default"
 });
 
-const emit=defineEmits({
-    click:null
-})
+const emit=defineEmits<ButtonEmitsType>()
 
 const handleClickButton=()=>{
     emit('click');

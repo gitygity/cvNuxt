@@ -1,12 +1,12 @@
 <template>
-  <ModalRoot icon="fa-solid fa-edit" title="About Section">
-    <form @submit.prevent="validateForm">
+  <ModalRoot @close="close" icon="fa-solid fa-edit" title="About Section">
       <template #body>
+        <form @submit.prevent="validateForm">
         <fieldset class="p-2">
           <legend class="font-semibold">Summery Info</legend>
           <TextInput name="firstName" placeholder="First Name" />
           <TextInput name="lastName" placeholder="Last Name" />
-          <TextAreaInput name="summery" placeholder="Summery" />
+          <TextArea name="summery" placeholder="Summery" />
         </fieldset>
         <fieldset class="p-2">
           <legend class="font-semibold">Basic Info</legend>
@@ -15,27 +15,26 @@
           <TextInput name="location" placeholder="Location" />
           <TextInput name="language" placeholder="Language" />
         </fieldset>
+      </form>
       </template>
       <template #footer>
-        <Button label="Cancel" @click="close('modal closed')"></Button>
+        <Button label="Cancel" @click="close()"></Button>
         <Button
           :label="isEdit ? 'Edit' : 'Add'"
-          @click="dismiss('modal dismissed')"
+          @click="apply()"
         ></Button>
       </template>
-    </form>
+   
   </ModalRoot>
 </template>
 
 <script lang="ts" setup>
-import { ModalRoot, Button, TextInput, TextAreaInput } from "../shared";
-import { useField, Field, Form, ErrorMessage } from "vee-validate";
+import { ModalRoot, Button, TextInput, TextArea } from "../shared";
+import {AboutSectionFormTypes,AboutFormInputType,AboutSectionEmitsTypes} from "./AboutSectionTypes"
 import * as yup from "yup";
 
-const { errorMessage, meta, value } = useField("fieldName");
-
-const formInput = reactive({
-  firstName: "",
+const formInput:AboutFormInputType = reactive({
+  firstName: "ff",
   lastName: "",
   summery: "",
   email: "",
@@ -64,15 +63,19 @@ const schema = yup.object({
   language: yup.string().required(),
 });
 
-export interface AboutSectionFormTypes {
-  isEdit: boolean;
-}
+
 
 withDefaults(defineProps<AboutSectionFormTypes>(), { isEdit: false });
 
-const close = (e) => {
-  console.log("loggggg", e);
+const emit=defineEmits<AboutSectionEmitsTypes>()
+
+const close = () => {
+  emit('close')
 };
+
+const apply=()=>{
+   emit('apply',formInput)
+}
 </script>
 
 <style lang=""></style>

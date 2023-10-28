@@ -10,11 +10,10 @@
 </template>
 
 <script setup lang="ts">
-interface TextInputPropsType {
-  placeholder: string;
-  name: string;
-}
-const props = withDefaults(defineProps<TextInputPropsType>(), {
+import type{ TextAreaPropsType } from './types/textAreaTypes';
+
+
+const props = withDefaults(defineProps<TextAreaPropsType>(), {
   label: "Default",
   name: "Default",
 });

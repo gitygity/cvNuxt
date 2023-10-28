@@ -2,8 +2,10 @@
   <div class="">
     <div class="flex flex-row justify-between items-baseline">
       <h3 class="font-bold text-base pb-1">{{ title }}</h3>
-      <IconButton :icon="icon" class="mb-2" @click="handleCloseModal">
+      <div class="flex ">
+      <IconButton icon="fa-solid fa-close" class="mb-2" @click="handleCloseModal">
       </IconButton>
+      </div>
     </div>
     <hr class="py-2" />
     <slot />
@@ -12,15 +14,16 @@
 
 <script setup lang="ts">
 import IconButton from "../IconButton.vue";
-// import { HeaderPropsType } from "./modalTypes";
-export interface HeaderPropsType {
-  title: string;
-  icon: string;
-}
-const handleCloseModal = () => {};
+import type{ HeaderEmitsType, HeaderPropsType } from "./modalTypes";
+
+
+const handleCloseModal = ()  =>{
+  emit('close')
+};
 
 withDefaults(defineProps<HeaderPropsType>(), {
   title: "Title modal",
-  icon: "fa-solid fa-edit",
 });
+
+const emit=defineEmits<HeaderEmitsType>()
 </script>
