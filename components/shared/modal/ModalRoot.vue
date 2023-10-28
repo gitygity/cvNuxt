@@ -11,10 +11,10 @@
 </template>
 
 <script lang="ts" setup>
-import ModalHeader from "./ModalHeader";
-import ModalBody from "./ModalBody";
-import ModalFooter from "./ModalFooter";
-import Modal from "./Modal";
+import ModalHeader from "./ModalHeader.vue";
+import ModalBody from "./ModalBody.vue";
+import ModalFooter from "./ModalFooter.vue";
+import Modal from "./Modal.vue";
 // import {ModalRootPropsType} from "./modalTypes"
 
 export interface ModalRootPropsType {
@@ -26,7 +26,7 @@ export interface ModalRootPropsType {
 
 withDefaults(defineProps<ModalRootPropsType>(), {});
 
-const close = (e) => {
+const close = (e:Event) => {
   console.log("loggggg", e);
 };
 </script>
