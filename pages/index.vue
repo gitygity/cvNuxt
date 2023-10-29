@@ -2,8 +2,8 @@
   <main>
  
     <AboutSection></AboutSection>
-    <!-- <SkillsSection></SkillsSection>
-    <PortfolioSection></PortfolioSection>
+    <SkillsSection></SkillsSection>
+    <!-- <PortfolioSection></PortfolioSection>
     <ExperienceSection></ExperienceSection>
     <EducationSection></EducationSection>
     <ReferencesSection></ReferencesSection> -->

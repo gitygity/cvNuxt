@@ -7,14 +7,12 @@
       Hello! I am<strong> {{ " " + user?.firstName + " " + user?.lastName }}</strong
       >.
     </p>
-    <p>
-      A Frontend developer with 4+ years of experience in developing interactive websites
-      & web pages incorporating responsive web design. expertise in web development (
-      React, Svelte, Typescript, JavaScript, etc) & testing (Cypress, Jest, Playwright).
-    </p>
+    <p>{{ user?.summery }} </p>
   </section>
 </template>
 
 <script setup lang="ts">
-const { data: user } = await useFetch("/api/user/user");
+import {SummeryType} from "./AboutSectionTypes"
+
+  const user=withDefaults(defineProps<SummeryType>(),{lastName:"",firstName:"",summery:""})
 </script>

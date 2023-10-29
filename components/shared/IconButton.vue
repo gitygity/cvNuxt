@@ -2,7 +2,7 @@
 
 <template >
     <div @click="handleClickIconButton" class="flex justify-end ">
-    <a class=" justify-center w-12 h-12 hover:bg-gray-200 cursor-pointer  rounded-full flex   items-center  p-2 " href="#"> <FontAwesomeIcon :class="props.color"  size="lg"  :icon="icon"></FontAwesomeIcon></a>
+    <a class=" justify-center w-12 h-12 hover:bg-gray-200 cursor-pointer  rounded-full flex   items-center  p-2 "> <FontAwesomeIcon :class="props.color"  size="lg"  :icon="icon"></FontAwesomeIcon></a>
     </div>
 </template>
 

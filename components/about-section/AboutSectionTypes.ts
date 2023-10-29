@@ -7,7 +7,10 @@ export interface AboutFormInputType {
   location: string;
   language: string;
 }
-export interface AboutSectionFormTypes {
+
+export type SummeryType=Pick<AboutFormInputType,"summery"|"firstName"|"lastName">
+export type BasicInfoType=Pick<AboutFormInputType,"email"|"phone"|"location"|"language">
+export interface AboutSectionFormPropsTypes extends AboutFormInputType {
   isEdit: boolean;
 }
 

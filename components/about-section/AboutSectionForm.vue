@@ -5,8 +5,8 @@
         <fieldset class="p-2">
           <legend class="font-semibold">Summery Info</legend>
           <TextInput :validateRule="schema.fields.firstName" name="firstName" placeholder="First Name" />
-          <TextInput :validateRule="schema.fields.firstName" name="lastName" placeholder="Last Name" />
-          <TextArea :validateRule="schema.fields.firstName" name="summery" placeholder="Summery" />
+          <TextInput :validateRule="schema.fields.lastName" name="lastName" placeholder="Last Name" />
+          <TextArea :validateRule="schema.fields.summery" name="summery" placeholder="Summery" />
         </fieldset>
         <fieldset class="p-2">
           <legend class="font-semibold">Basic Info</legend>
@@ -32,21 +32,13 @@
 <script lang="ts" setup>
 import { ModalRoot, Button, TextInput, TextArea } from "../shared";
 import { Form } from 'vee-validate';
-import {AboutSectionFormTypes,AboutFormInputType,AboutSectionEmitsTypes} from "./AboutSectionTypes"
+import {AboutSectionFormPropsTypes,AboutFormInputType,AboutSectionEmitsTypes} from "./AboutSectionTypes"
 import * as yup from "yup";
 
 //______________________________initialize
-withDefaults(defineProps<AboutSectionFormTypes>(), { isEdit: false });
+const aboutData=withDefaults(defineProps<AboutSectionFormPropsTypes>(), { isEdit: false });
 const emit=defineEmits<AboutSectionEmitsTypes>()
-  const formInput:AboutFormInputType = reactive({
-  firstName: "gity",
-  lastName: "ghasemi",
-  summery: "sumeryyyyyyyyyyy",
-  email: "ff@ff",
-  phone: "456543",
-  location: "34534",
-  language: "345345",
-});
+  const formInput:AboutFormInputType = reactive(aboutData);
 
 //______________________________validation init
 const phoneRegExp = /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;

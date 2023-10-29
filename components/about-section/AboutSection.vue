@@ -3,11 +3,36 @@ import AboutSectionBasicInfo from "./AboutSectionBasicInfo.vue";
 import AboutSectionSummery from "./AboutSectionSummery.vue";
 import { IconButton } from "../shared";
 import AboutSectionForm from "./AboutSectionForm.vue";
-import {AboutFormInputType} from "./AboutSectionTypes"
+import {AboutFormInputType, BasicInfoType, SummeryType} from "./AboutSectionTypes"
 import { Teleport } from "vue";
 
 //_____________________________________refs
-const isShowAboutSectionModal = ref(true);
+const { data: info } = await useFetch("/api/info/info");
+const { data: user } = await useFetch("/api/user/user");
+
+let summeryData:SummeryType
+let basicInfoData:BasicInfoType
+let allAboutData:AboutFormInputType
+
+watchEffect(()=>{
+  summeryData={
+    firstName:user.value?.firstName||"",
+    lastName:user.value?.lastName||"",
+    summery:info.value?.summery||""
+  }
+  basicInfoData={
+    email:info.value?.email||"",
+    language:info.value?.language||"",
+    location:info.value?.location||"",
+    phone:info.value?.phone||""
+  }
+  allAboutData={
+    ...summeryData,
+    ...basicInfoData
+  }
+})
+
+const isShowAboutSectionModal = ref(false);
 const isEdit = ref(false);
 
 const toggleShowDialog = () => {
@@ -19,11 +44,11 @@ const handleApplyAboutSectionForm=(data:AboutFormInputType)=>{console.log("about
   <section id="about" class="content">
     <div class="card">
       <IconButton @click="toggleShowDialog"></IconButton>
-      <AboutSectionSummery></AboutSectionSummery>
-      <AboutSectionBasicInfo></AboutSectionBasicInfo>
+      <AboutSectionSummery v-bind="summeryData" ></AboutSectionSummery>
+      <AboutSectionBasicInfo  v-bind="basicInfoData"  :basicInfoData="basicInfoData"></AboutSectionBasicInfo>
       <Teleport to="body">
         <Transition mode="in-out">
-        <AboutSectionForm @apply="handleApplyAboutSectionForm" @close="toggleShowDialog" :isEdit="isEdit" v-if="isShowAboutSectionModal" />
+        <AboutSectionForm v-bind="allAboutData" @apply="handleApplyAboutSectionForm" @close="toggleShowDialog" :isEdit="isEdit" v-if="isShowAboutSectionModal" />
         </Transition>
       </Teleport>
     </div>

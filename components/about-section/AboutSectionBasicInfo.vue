@@ -11,7 +11,9 @@
 </template>
 
 <script setup lang="ts">
-const { data: info } = await useFetch("/api/info/info");
+import {BasicInfoType} from "./AboutSectionTypes"
+
+const info=withDefaults(defineProps<BasicInfoType>(),{email:"",phone:"",language:"",location:""})
 </script>
 
 <style scoped lang="css">

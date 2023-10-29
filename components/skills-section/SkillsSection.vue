@@ -1,10 +1,27 @@
 <template>
   <section id="skills" class="content">
-   <SkillsSectionHeader></SkillsSectionHeader>
-   <SkillsSectionBody></SkillsSectionBody>
+   <SkillsSectionHeader ></SkillsSectionHeader>
+   <SkillsSectionBody v-bind="skills" @click="toggleShowDialog"></SkillsSectionBody>
+   <Teleport to="body">
+        <Transition mode="in-out">
+        <SkillsSectionForm :skills="skills ||[]" @apply="handleApplySkillsSectionForm" @close="toggleShowDialog" :isEdit="isEdit" v-if="isShowSkillSectionModal" />
+        </Transition>
+      </Teleport>
   </section>
 </template>
 <script setup lang="ts">
+import { Teleport } from "vue";
+import { SkillItemType } from "./skillsSectionTypes";
+
+//_______________________________________refs
+const isShowSkillSectionModal = ref(false);
+const isEdit = ref(false);
+const { data:skills } =await useFetch<SkillItemType[]>("/api/skill/skill");
+//______________________________________functions
+const toggleShowDialog = () => {
+  isShowSkillSectionModal.value = !isShowSkillSectionModal.value;
+};
+const handleApplySkillsSectionForm=(data:any)=>{console.log("skills section data",data)}
 
 </script>
 

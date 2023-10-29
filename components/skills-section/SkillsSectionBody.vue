@@ -1,13 +1,16 @@
 <template>
   <div class="card">
-    <IconButton @click="handleClick"></IconButton>
+  <!-- <div class="flex justify-end"> -->
+  <IconButton @click="handleOpenEditModal"></IconButton>
+    <!-- <IconButton icon="fa-solid fa-add" @click="handleOpenAddModal"></IconButton></div> -->
+    
     <section>
       
       <div class="skills-container">
-     
-        <div v-for="(skill, index) in skills" :key="index" class="progress-container">
+     {{props?.skills && props?.skills[0]?.percent }}
+        <div v-for="(skill, index) in props?.skills" :key="index" class="progress-container">
           <span class="progress-title"
-            ><abbr>{{ skill?.skill }}</abbr></span
+            ><abbr>{{ skill.skillName }}</abbr></span
           >
           <span class="progress-percent">{{ skill?.percent }}%</span>
           <div class="progress-gutter">
@@ -21,11 +24,15 @@
 
 <script setup lang="ts">
 import {IconButton} from "../shared"
+import type{ SkillList } from "./skillsSectionTypes";
 
-const { data: skills } = useFetch("/api/skill/skill");
 
 
-const handleClick=()=>{console.log("clicked skills")}
+const handleOpenEditModal=()=>{console.log("clicked skills")}
+const handleOpenAddModal=()=>{console.log("clicked skills")}
+
+
+const props=withDefaults(defineProps<{skills:SkillList}>(),{skills:undefined})
 </script>
 
 <style scoped lang="css">
@@ -36,7 +43,7 @@ const handleClick=()=>{console.log("clicked skills")}
 }
 
 .progress-bar {
-  z-index: 999;
+  z-index: 5;
   height: 0.3rem;
   position: absolute;
   left: 0;
