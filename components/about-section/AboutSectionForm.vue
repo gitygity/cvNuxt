@@ -1,28 +1,29 @@
 <template>
   <ModalRoot @close="close" icon="fa-solid fa-edit" title="About Section">
       <template #body>
-        <form @submit.prevent="validateForm">
+        <form @submit.prevent="onSubmit">
         <fieldset class="p-2">
           <legend class="font-semibold">Summery Info</legend>
-          <TextInput name="firstName" placeholder="First Name" />
-          <TextInput name="lastName" placeholder="Last Name" />
-          <TextArea name="summery" placeholder="Summery" />
+          <TextInput :validateRule="schema.fields.firstName" name="firstName" placeholder="First Name" />
+          <TextInput :validateRule="schema.fields.firstName" name="lastName" placeholder="Last Name" />
+          <TextArea :validateRule="schema.fields.firstName" name="summery" placeholder="Summery" />
         </fieldset>
         <fieldset class="p-2">
           <legend class="font-semibold">Basic Info</legend>
-          <TextInput name="email" placeholder="Email" />
-          <TextInput name="phone" placeholder="Phone" />
-          <TextInput name="location" placeholder="Location" />
-          <TextInput name="language" placeholder="Language" />
+          <TextInput :validateRule="schema.fields.email" name="email" placeholder="Email" />
+          <TextInput :validateRule="schema.fields.phone" name="phone" placeholder="Phone" />
+          <TextInput :validateRule="schema.fields.location" name="location" placeholder="Location" />
+          <TextInput :validateRule="schema.fields.language" name="language" placeholder="Language" />
         </fieldset>
       </form>
       </template>
       <template #footer>
-        <Button label="Cancel" @click="close()"></Button>
+        <Button label="Cancel" @click="close"></Button>
         <Button
+          type="submit"
           :label="isEdit ? 'Edit' : 'Add'"
-          @click="apply()"
-        ></Button>
+          @click="onSubmit"
+        />
       </template>
    
   </ModalRoot>
@@ -30,52 +31,49 @@
 
 <script lang="ts" setup>
 import { ModalRoot, Button, TextInput, TextArea } from "../shared";
+import { Form } from 'vee-validate';
 import {AboutSectionFormTypes,AboutFormInputType,AboutSectionEmitsTypes} from "./AboutSectionTypes"
 import * as yup from "yup";
 
-const formInput:AboutFormInputType = reactive({
-  firstName: "ff",
-  lastName: "",
-  summery: "",
-  email: "",
-  phone: "",
-  location: "",
-  language: "",
+//______________________________initialize
+withDefaults(defineProps<AboutSectionFormTypes>(), { isEdit: false });
+const emit=defineEmits<AboutSectionEmitsTypes>()
+  const formInput:AboutFormInputType = reactive({
+  firstName: "gity",
+  lastName: "ghasemi",
+  summery: "sumeryyyyyyyyyyy",
+  email: "ff@ff",
+  phone: "456543",
+  location: "34534",
+  language: "345345",
 });
 
-const validateForm = () => {
-  try {
-    schema.validateSync(formInput);
-  } catch (error) {
-    console.log(error);
-  }
-};
-
+//______________________________validation init
 const phoneRegExp = /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;
-
 const schema = yup.object({
   firstName: yup.string().required(),
   lastName: yup.string().required(),
   summery: yup.string().required().max(400, "must be less than 400 character"),
-  email: yup.string().email("must be a valid email"),
-  phone: yup.string().matches(phoneRegExp, "Phone number is not valid"),
+  email: yup.string().required().email("must be a valid email"),
+  phone: yup.string().required().matches(phoneRegExp, "Phone number is not valid"),
   location: yup.string().required(),
   language: yup.string().required(),
 });
 
-
-
-withDefaults(defineProps<AboutSectionFormTypes>(), { isEdit: false });
-
-const emit=defineEmits<AboutSectionEmitsTypes>()
+//___________________________________functions
+const { handleSubmit } = useForm<AboutFormInputType>({
+  validationSchema: schema,
+  initialValues: formInput
+});
 
 const close = () => {
   emit('close')
 };
+const onSubmit = handleSubmit(values => {
+  emit('apply',values)
+  close()
+});
 
-const apply=()=>{
-   emit('apply',formInput)
-}
 </script>
 
 <style lang=""></style>

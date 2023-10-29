@@ -21,7 +21,7 @@ import  type { ModalRootEmitsType, ModalRootPropsType } from "./modalTypes";
 withDefaults(defineProps<ModalRootPropsType>(), {});
 const emit=defineEmits<ModalRootEmitsType>()
 
-const close = (e:Event) => {
+const close = () => {
   emit('close')
 };
 </script>

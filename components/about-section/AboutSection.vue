@@ -13,7 +13,7 @@ const isEdit = ref(false);
 const toggleShowDialog = () => {
   isShowAboutSectionModal.value = !isShowAboutSectionModal.value;
 };
-const handleApplyAboutSectionForm=(data:AboutFormInputType)=>{}
+const handleApplyAboutSectionForm=(data:AboutFormInputType)=>{console.log("about section data",data)}
 </script>
 <template>
   <section id="about" class="content">
